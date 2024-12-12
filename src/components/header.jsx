@@ -1,19 +1,40 @@
+/* eslint-disable react/prop-types */
 import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import { useState } from "react";
+import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+import '../styles/style.css'
 
-function Header() {
+function Header({ setSearchText }) {
+  const [searchedText, setSearchedText] = useState('');
+
+  const handleSearchInput = (event) => {
+    setSearchedText(event.target.value);
+  };
+
+  const handleSearchSubmit = () => {
+    setSearchText(searchedText);
+  };
+  
   return (
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home">Home</Navbar.Brand>
+        <Navbar.Brand href="#home">Navbar</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#products">Products</Nav.Link>
-            <Nav.Link href="#cart">Cart(0)</Nav.Link>
-          </Nav>
+            <Nav.Link href="#cart" className='cart-link'>Cart(0)</Nav.Link>
+            <Form className='searchForm'>
+            <FormControl
+              onChange={handleSearchInput}
+              value={searchedText}
+              type="text"
+              placeholder="Search"
+              className="mr-sm-2"
+            />
+            <Button onClick={handleSearchSubmit} variant="outline-success">
+              Search
+            </Button>
+          </Form>
         </Navbar.Collapse>
       </Container>
     </Navbar>

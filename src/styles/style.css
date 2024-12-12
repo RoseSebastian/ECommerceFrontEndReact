@@ -1,0 +1,14 @@
+#basic-navbar-nav {
+    justify-content: space-between;
+}
+.cart-link{
+    margin: 8px 0;
+}
+.searchForm{
+    display: flex;
+    gap: 10px;
+}
+.carousel-image{
+    height: 400px;
+    object-fit: cover;
+}
